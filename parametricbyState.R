@@ -21,12 +21,6 @@
 #(2020) also posits a mean=8.4 days and sd=3.8 days, which corresponded to SARS [as per (Lipsitch et al., 
 #2003)]. 
 
-#Additionally, herd immunity (1-1/R0) is a function of estimates of R0. Thw papers were used to
-#establish this range: "Estimation of the reproductive number of novel coronavirus..." (Zhang et al.),
-#and "The reproductive number of COVID-19..." (Liu at al.). From these, we settled on a COVID-19 R0
-#range of 2 to 3, implying herd immunity may be achieved at 50% to 67% of the population being exposed. 
-#Furthermore, we used the ML estimate of 2.28 for R0 presented in (Zhang et al.) for our "best guess,"
-#implying a "best guess" herd immunity level of 56.1%.
 
 ##############################################################################################################
 #UPDATES: 
@@ -38,12 +32,7 @@
 #number," and (2) "the serial interval of COVID-19 is close to or shorter than its median incubation period. 
 #This suggests that a substantial proportion of secondary transmission may occur prior to illness onset."
 
-#Inputs: 
-#Cumulative confirmed COVID-19 cases by US county by day. The current, best available source
-#is from https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/, which allows for the 
-#download of the file "covid_confirmed_usafacts.csv"
-
-#Outputs: County-level R(t) values by day
+#Outputs: State-level R(t) values by day
 
 library(tidyverse)
 library(extraDistr)
