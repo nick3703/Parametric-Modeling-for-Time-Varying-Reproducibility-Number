@@ -1,4 +1,4 @@
-#Authors: LTC Nick Clark, PhD, USMA D/MATH COL Matt Dabkowski, PhD, USMA D/SE
+#Authors: LTC Nick Clark, PhD, USMA D/MATH COL Matt Dabkowski, PhD, USMA D/SE, Rodney X. Sturdivant, MAJ Dusty Turner
 #Date: Created 23 MAR 2020, Updated 1 APR 2020
 #Purpose: This script estimates the daily effective reproduction number (R(t)) of COVID-19 by US county. 
 
@@ -80,7 +80,7 @@ rt.func.v3_dusty<-function(dat,mean.Weibull=4.8,sd.Weibull=2.3){
 
 #Read in the daily incidence data from usafacts.org and collect the dates
 #us.data<-read_csv("https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
-jhu_all<-read_csv("JHU_17Apr.csv")
+jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_17Apr.csv")
 #test.data<-us.data%>%filter(stateFIPS > 0)
 #county_pop<-read_csv("county_pop.csv")
 
