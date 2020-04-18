@@ -13,12 +13,12 @@ full.data<-read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/m
 
 #This code assumes a 4x ascertainment rate
 #User Supplies County name, state, number of initial exposed, initial infected at pandemic start
-date.of.pandemic.start<-"2020-03-25"
-county<-"Orange County" #Input name of County or New York City, for
+date.of.pandemic.start<-"2020-03-23"
+county<-"All Counties" #Input name of County or New York City, for
 #county, nee to put in trailing word 'county', for e.g. county<-"Orange County"
 state<-"NY" #Two letter state
 ascertainment.rate<-4 #Assume we only observe 1/4 of all cases
-Population<-383000 #Input Population
+Population<-13000000 #Input Population
 exposed.rate<-1.5 #Initially assume 1.5 times infected have been exposed
 mGT <- generation.time("weibull", c(4.3,2.3)) #Generation distribution from https://www.ijidonline.com/article/S1201-9712(20)30119-3/pdf.
 
@@ -68,7 +68,7 @@ daily[50:51]<-daily[51]/2  #something weird with this day, assume
 #generation.time is a funtion from the R0 package.
 #If no truncation is provided, the distribution is truncated at 99.99 percent probability.
 et<-as.numeric(length(daily))
-R.vals.Ital<-est.R0.TD(daily,mGT,begin=40,end=et-1)
+R.vals.Ital<-est.R0.TD(daily,mGT,begin=48,end=et-1)
 
 #Plot the results
 #Cairo(5, 5, units="in", type="png", bg="white", dpi = 300, file="Italy's R(t).png") # creates a nice .png
@@ -386,4 +386,4 @@ ggplot() +
                                                    linetype = (c(0,2,2,2,1,1,1))), nrow=3, byrow=TRUE)) +
   scale_x_date(breaks = pretty_breaks(10)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
-  ylim(0,25000)
+  ylim(0,2000000)
