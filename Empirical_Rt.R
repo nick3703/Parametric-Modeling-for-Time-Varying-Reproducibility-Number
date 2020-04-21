@@ -13,7 +13,7 @@ full.data<-read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/m
 
 #This code assumes a 4x ascertainment rate
 #User Supplies County name, state, number of initial exposed, initial infected at pandemic start
-date.of.pandemic.start<-"2020-03-23"
+date.of.pandemic.start<-"2020-03-24"
 county<-"All Counties" #Input name of County or New York City, for
 #county, nee to put in trailing word 'county', for e.g. county<-"Orange County"
 state<-"NY" #Two letter state
@@ -69,6 +69,9 @@ daily[50:51]<-daily[51]/2  #something weird with this day, assume
 #If no truncation is provided, the distribution is truncated at 99.99 percent probability.
 et<-as.numeric(length(daily))
 R.vals.Ital<-est.R0.TD(daily,mGT,begin=48,end=et-1)
+
+t<-seq(0,65)
+R.vals.Ital$R<-exp(0.6-.03*t)
 
 #Plot the results
 #Cairo(5, 5, units="in", type="png", bg="white", dpi = 300, file="Italy's R(t).png") # creates a nice .png
@@ -138,8 +141,8 @@ for (j in 1:length(R0.Ital)){
   parameters_values <- c(
     N = N, #Total Population
     R0 = as.numeric(R0.Ital[j]), #R0 value
-    DI = 8, #Infectious Period
-    DE = 5 #Incubation Period
+    DI = 12, #Infectious Period
+    DE = 7 #Incubation Period
   )
   seir_equations <- function(time, variables, parameters) {
     with(as.list(c(variables, parameters)), {
@@ -200,8 +203,8 @@ for (j in 1:length(R0.Wuh)){
   parameters_values <- c(
     N = N, #Total Population
     R0 = as.numeric(R0.Wuh[j]), #R0 value
-    DI = 8, #Infectious Period
-    DE = 5 #Incubation Period
+    DI = 7, #Infectious Period
+    DE = 4 #Incubation Period
   )
   seir_equations <- function(time, variables, parameters) {
     with(as.list(c(variables, parameters)), {
@@ -387,3 +390,27 @@ ggplot() +
   scale_x_date(breaks = pretty_breaks(10)) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) +
   ylim(0,2000000)
+
+
+###Make Plot
+library(lubridate)
+tot.df<-data.frame(dates=OC.df$dates[-1],`New Cases`=diff(OC.df$I),how=rep("Observed",length(diff(OC.df$I))))
+
+fut.df<-data.frame(dates=OC.proj.IT.obs$dates[29:66],`New Cases`=diff(OC.proj.IT.obs$I)[29:66],how="Tail of First Peak")
+
+all.tot<-rbind(tot.df,fut.df)
+
+fut3.df<-data.frame(dates=seq(ymd('2020-05-29'),ymd('2020-06-29'),by='days'),`New Cases`=c(500,500,700,750,750,900,900,950,950,950,1000,1000,1200,1200,
+                                                                                           800,800,700,700,600,700,500,500,600,500,400,300,200,200,200,200,200,150),
+                    how="Resurgence")
+
+fut3.df<-fut3.df%>%mutate(New.Cases=New.Cases*1.8)
+
+all.tot<-rbind(all.tot,fut3.df)
+
+
+all.tot%>%ggplot(aes(x=dates,y=New.Cases,fill=how))+
+  geom_col()+theme_bw()
+
+tot.df%>%ggplot(aes(x=dates,y=New.Cases,fill=how))+
+  geom_col()+theme_bw()

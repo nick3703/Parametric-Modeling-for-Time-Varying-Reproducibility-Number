@@ -80,7 +80,7 @@ rt.func.v3_dusty<-function(dat,mean.Weibull=4.8,sd.Weibull=2.3){
 
 #Read in the daily incidence data from usafacts.org and collect the dates
 #us.data<-read_csv("https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
-jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_19Apr.csv")
+jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_20Apr.csv")
 #test.data<-us.data%>%filter(stateFIPS > 0)
 #county_pop<-read_csv("county_pop.csv")
 
@@ -174,7 +174,7 @@ df1 <- df %>%
   mutate(type = "parametric")
 
 
-
+write.csv(output,paste0(lubridate::today(),"ByState.csv"))
 
 p[[j]]<-ggplot(df1, aes(x = day, y = pred))+
   geom_line() +
