@@ -80,7 +80,7 @@ rt.func.v3_dusty<-function(dat,mean.Weibull=4.8,sd.Weibull=2.3){
 
 #Read in the daily incidence data from usafacts.org and collect the dates
 #us.data<-read_csv("https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
-jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_21Apr.csv")
+jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_rollup_as_of_2020-04-23.csv")
 #test.data<-us.data%>%filter(stateFIPS > 0)
 #county_pop<-read_csv("county_pop.csv")
 
@@ -90,28 +90,6 @@ jhu_state<-jhu_all %>% group_by(province_state,date)%>%
   summarize(confirmed=sum(confirmed))
 
 
-
-#daily <-
-#  jhu_all %>% 
-  #load_data_files()$jhu_all %>%
-  #left_join(county_pop) %>% 
-  #left_join(stay_at_home) %>% 
-  #mutate(locked_down = if_else(date>effective_date,1,0)) %>% 
-  #filter(!is.na(country_region), county_name!="Unassigned") %>%
-  #group_by(fips) %>% 
-  #arrange(fips,date) %>% 
-  # mutate(daily_confirmed = confirmed-lag(confirmed))  %>% 
-  # mutate(daily_confirmed = replace_na(daily_confirmed,confirmed[1])) %>%
-  # mutate(daily_confirmed = if_else(daily_confirmed<0,0,daily_confirmed))  %>% 
-  #filter(!(confirmed==0 & row_number()==1)) %>% 
-  #filter(confirmed!=0) %>%
-  # filter(daily_confirmed!=0) %>% ## dirty data
-  #group_by(date,fips) %>% filter(confirmed==max(confirmed)) %>% 
-  #group_by(fips) %>%
-  #filter(n()>1) %>% 
-  #filter(country_region == "US") 
-# group_split()
-
 rt_est <- 
   jhu_state %>% ## cases confirmed by fips
   group_by(province_state) %>% 
@@ -120,13 +98,10 @@ rt_est <-
   unnest(ans) ## expands back to one dataframe
 
 
-rt_est_wide<-rt_est%>%pivot_wider(id_cols=province_state,names_from = day,values_from = r.vals)
+state.names<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/StateNames.csv")
 
 rt_est<-rt_est%>%
-  filter(!province_state %in%c("American Samoa","Bangladesh",
-                               "India","Northern Mariana Islands",
-                               "Papua New Ginea","Philippines",
-                               NA,"Virgin Islands","Indonesia" ))
+  filter(province_state %in%state.names$State)
 
 list_states<-unique(rt_est$province_state)
 
@@ -193,7 +168,7 @@ p[[j]]<-ggplot(df1, aes(x = day, y = pred))+
 
 }
 
-pdf("plots.pdf")
+pdf(paste0(lubridate::today(),"plots.pdf"))
 for (i in 1:53) {
   print(p[[i]])
 }
