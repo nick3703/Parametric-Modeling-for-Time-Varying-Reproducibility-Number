@@ -80,7 +80,7 @@ rt.func.v3_dusty<-function(dat,mean.Weibull=4.8,sd.Weibull=2.3){
 
 #Read in the daily incidence data from usafacts.org and collect the dates
 #us.data<-read_csv("https://usafactsstatic.blob.core.windows.net/public/data/covid-19/covid_confirmed_usafacts.csv")
-jhu_all<-read_csv("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/JHU_rollup_as_of_2020-04-23.csv")
+jhu_all<-read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.CSV"))
 #test.data<-us.data%>%filter(stateFIPS > 0)
 #county_pop<-read_csv("county_pop.csv")
 
@@ -114,7 +114,7 @@ for(j in 1:length(list_states)){
   state<-rt_est%>%filter(province_state==list_states[j])
   output[j,]$state=list_states[j]
   # Fit models with Gamma errors
-  gam.glm <- glm(r.vals+.01~day, family = Gamma(link = "log"),data=state)
+  gam.glm <- glm(r.vals+.1~day, family = Gamma(link = "log"),data=state)
 
   #summary(gam.glm)    # summary, estimates
   coefs<-gam.glm$coefficients
