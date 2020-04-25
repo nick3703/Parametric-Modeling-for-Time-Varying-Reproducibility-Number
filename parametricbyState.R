@@ -106,7 +106,7 @@ rt_est<-rt_est%>%
 list_states<-unique(rt_est$province_state)
 
 output<-data.frame(state=NA,b0=NA,b1=NA,ucb=NA,curr.r=NA,
-                   curr.emp.r=NA)
+                   curr.emp.r=NA,latest.cases=NA)
 
 
 p<-list()
@@ -115,7 +115,7 @@ for(j in 1:length(list_states)){
   output[j,]$state=list_states[j]
   # Fit models with Gamma errors
   gam.glm <- glm(r.vals+.1~day, family = Gamma(link = "log"),data=state)
-
+  output[j,]$latest.cases=state[ncol(state),]$daily_new_cases
   #summary(gam.glm)    # summary, estimates
   coefs<-gam.glm$coefficients
 #gam.glm$fitted.values
@@ -157,7 +157,7 @@ p[[j]]<-ggplot(df1, aes(x = day, y = pred))+
   #geom_ribbon(aes(ymin = plwr, ymax = pupr), alpha = 0.2) +
   #geom_line(aes(x=day, y=pred)) +
   #facet_wrap(~province_state) +
-  labs(title = paste0("Model fit- ",list_states[j]))+
+  labs(title = paste0("Model fit- ",list_states[j],": Today's New Cases - ",output[j,]$latest.cases))+
   ylim(c(0,5))+
   geom_hline(yintercept=1,color="red")+
   theme_bw()+theme(
