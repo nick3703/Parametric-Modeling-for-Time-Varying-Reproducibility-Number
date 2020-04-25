@@ -46,7 +46,7 @@
 #Outputs: County-level R(t) values by day
 
 
-jhu_all<-read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.CSV"))
+jhu_all<-read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.csv"))
 
 
 
