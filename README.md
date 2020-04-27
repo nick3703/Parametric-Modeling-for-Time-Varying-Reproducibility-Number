@@ -30,3 +30,18 @@ This suggests that a substantial proportion of secondary transmission may occur 
 ## Update 23 April
 
 Added Rt by County which calculates the empirical Rt value for each county in America.  Please note that county level estimates for rural counties are unlikely to be valid due to small sample sizes.
+
+## Update 27 April
+
+Naming convention has stabilized.  In order to pull daily run:
+
+### JHU Data
+read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.csv"))
+
+### Daily State $R_t$
+read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"ByState.csv"))
+
+### Daily County $R_t$
+
+read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"ByCounty.csv"))
+
