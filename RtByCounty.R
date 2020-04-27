@@ -45,14 +45,14 @@
 
 #Outputs: County-level R(t) values by day
 
+library(tidyverse)
+library(extraDistr)
+library(mixdist) #used to recoved the Weibull parameters from the mean and sd
 
 jhu_all<-read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.csv"))
 
 
 
-library(tidyverse)
-library(extraDistr)
-library(mixdist) #used to recoved the Weibull parameters from the mean and sd
 
 #This function accepts the cumulative confirmed COVID-19 cases by county by day.
 #It then estimates R(t) for that county by day.
