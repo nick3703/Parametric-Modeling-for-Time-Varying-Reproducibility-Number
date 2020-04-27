@@ -38,10 +38,10 @@ Naming convention has stabilized.  In order to pull daily run:
 ### JHU Data
 read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.csv"))
 
-### Daily State $R_t$
+### Daily State R(t)
 read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"ByState.csv"))
 
-### Daily County $R_t$
+### Daily County R(t)
 
 read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"ByCounty.csv"))
 
