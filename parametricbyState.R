@@ -148,6 +148,9 @@ df1 <- df %>%
   add_pi(gam.glm, names = c("plwr","pupr"))%>%
   mutate(type = "parametric")
 
+df1%>%ggplot(aes(x=day,y=r.vals))+
+  geom_point()+geom_line(aes(x=day,y=pred),lwd=2,color="red")+
+  theme_bw()
 
 write.csv(output,paste0(lubridate::today(),"ByState.csv"))
 
