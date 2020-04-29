@@ -7,7 +7,7 @@ name: RunScript
 # events but only for the master branch
 on:
  schedule: 
-  - cron: "40 16 * * *"
+  - cron: "50 16 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -19,4 +19,4 @@ jobs:
     - uses: r-lib/actions/setup-r@v1
       with:
        r-version: '3.5.3' # The R version to download (if necessary) and use.
-    - run: Rscript ./parametricByState.R
+    - run: Rscript ./scripts/parametricByState.R
