@@ -7,7 +7,7 @@ name: RunScript
 # events but only for the master branch
 on:
  schedule: 
-  - cron: "45 20 * * *"
+  - cron: "25 21 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -25,6 +25,7 @@ jobs:
       - run: |
           git config --global user.name 'Bryan Jonas'
           git config --global user.email 'bryan.jonas@westpoint.edu'
+          git add *
           git commit -am "Automated Push"
           git push
 
