@@ -13,8 +13,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Runs a single command using the runners shell
+    steps:
     - name: Run a one-line script
       run: Rscript parametricByState.R
 
