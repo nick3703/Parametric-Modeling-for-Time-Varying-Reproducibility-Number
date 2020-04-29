@@ -33,7 +33,10 @@
 #This suggests that a substantial proportion of secondary transmission may occur prior to illness onset."
 
 #Outputs: State-level R(t) values by day
-
+install.packages('tidyverse')
+install.packages('extraDistr')
+install.packages('mixdist')
+intall.packages('ciTools')
 library(tidyverse)
 library(extraDistr)
 library(mixdist) #used to recoved the Weibull parameters from the mean and sd
