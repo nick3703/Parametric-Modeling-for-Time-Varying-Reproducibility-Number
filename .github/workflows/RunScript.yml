@@ -7,7 +7,7 @@ name: RunScript
 # events but only for the master branch
 on:
  schedule: 
-  - cron: "45 18 * * *"
+  - cron: "47 18 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,4 +22,5 @@ jobs:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
       - run: ls
       - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/parametricbyState.R
-      - run: Rscript ./parametricbyState.R
+      - run: ls
+      - run: EndBug/add-and-commit@v4.0.2
