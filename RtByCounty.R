@@ -125,3 +125,8 @@ rt_est <-
 rt_wide<-rt_est%>%pivot_wider(id_cols=fips,names_from=day,values_from=r.vals)
 
 write.csv(rt_wide,paste0(lubridate::today(),"ByCounty.csv"))
+
+source("GitPushFunctions.R")
+gitadd()
+gitcommit()
+gitpush()
