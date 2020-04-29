@@ -127,6 +127,8 @@ rt_wide<-rt_est%>%pivot_wider(id_cols=fips,names_from=day,values_from=r.vals)
 write.csv(rt_wide,paste0(lubridate::today(),"ByCounty.csv"))
 
 source("GitPushFunctions.R")
+git2r::config(user.name = "nick3703",user.email = "nick3703@hotmail.com")
+
 gitadd()
 gitcommit()
 gitpush()
