@@ -36,7 +36,7 @@
 install.packages('tidyverse')
 install.packages('extraDistr')
 install.packages('mixdist')
-intall.packages('ciTools')
+install.packages('ciTools')
 library(tidyverse)
 library(extraDistr)
 library(mixdist) #used to recoved the Weibull parameters from the mean and sd
