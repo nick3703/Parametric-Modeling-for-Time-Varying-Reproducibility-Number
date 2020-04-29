@@ -7,7 +7,7 @@ name: RunScript
 # events but only for the master branch
 on:
  schedule: 
-  - cron: "05 20 * * *"
+  - cron: "45 20 * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,5 +22,9 @@ jobs:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
       - run: sudo apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev
       - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/parametricbyState.R
-      - run: ls
-      - run: EndBug/add-and-commit@v4.0.2
+      - run: |
+          git config --global user.name 'Bryan Jonas'
+          git config --global user.email 'bryan.jonas@westpoint.edu'
+          git commit -am "Automated Push"
+          git push
+
