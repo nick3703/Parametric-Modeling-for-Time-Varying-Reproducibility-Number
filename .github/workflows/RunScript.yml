@@ -20,4 +20,4 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           r-version: '3.5.3' # The R version to download (if necessary) and use.
-      - run: Rscript $GITHUB_WORKSPACE/parametricByState.R
+      - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/parametricByState.R
