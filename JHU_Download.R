@@ -1,9 +1,11 @@
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(lubridate)) install.packages('lubridate')
+if (!require(janitor)) install.packages('janitor')
 
 
 library(tidyverse)
 library(lubridate)
+library(janitor)
 options(scipen = 999)
 options(tibble.width = Inf)
 
