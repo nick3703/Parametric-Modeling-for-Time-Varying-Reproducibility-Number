@@ -48,6 +48,8 @@ if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(extraDistr)) install.packages('extraDistr')
 if (!require(mixdist)) install.packages('mixdist')
 if (!require(ciTools)) install.packages('ciTools')
+if (!require(git2r)) install.packages('git2r')
+if (!require(drat)) install.packages('drat')
 library(tidyverse)
 library(extraDistr)
 library(mixdist) #used to recoved the Weibull parameters from the mean and sd

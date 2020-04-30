@@ -1,6 +1,9 @@
 #install.packages("git2r")
 
 #Credit to https://stackoverflow.com/questions/55432420/how-can-i-commit-changes-to-github-from-within-a-r-script
+if (!require(git2r)) install.packages('git2r')
+if (!require(drat)) install.packages('drat')
+
 library(git2r)
 library(drat)
 
