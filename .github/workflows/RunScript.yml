@@ -7,7 +7,7 @@ name: RunScript
 # events but only for the master branch
 on:
  schedule: 
-  - cron: "17 16 * * *"
+  - cron: "45 16 * * *"
 
 jobs:
   runscript:
