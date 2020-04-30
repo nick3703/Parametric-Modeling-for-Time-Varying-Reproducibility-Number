@@ -1,6 +1,6 @@
 # Parametric-Modeling-for-Time-Varying-Reproducibility-Number
 
-Purpose: This script estimates the daily effective reproduction number (R(t)) of COVID-19 by US county. 
+Purpose: This script estimates the daily effective reproduction number (R(t)) of COVID-19 by US county. We extend this to State by not only finding the daily effective reproduction number but also parametrically modeling it which allows us to forecast future R(t) values and subsequently future cases by state.
 
 Description: As described in Nishiura and Chowell (2009), R(t) is defined as the actual average # 
 of secondary cases per primary case at calendar time t. R(t) shows time-dependent variation due
@@ -26,6 +26,8 @@ days and 2.3 days." This is important, as (1) "The difference between these dist
 using serial intervals estimates from SARS data will result in overestimation of the COVID-19 basic reproduction 
 number," and (2) "the serial interval of COVID-19 is close to or shorter than its median incubation period. 
 This suggests that a substantial proportion of secondary transmission may occur prior to illness onset."
+
+The main files to run are parametricbyState.R which fits a parametric model the empirical Rt values for each state and Rtbycounty.R which gives the empirical Rt estimates by county
 
 ## Update 23 April
 
