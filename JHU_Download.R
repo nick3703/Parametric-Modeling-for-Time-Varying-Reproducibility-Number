@@ -1,6 +1,7 @@
 if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(lubridate)) install.packages('lubridate')
 if (!require(janitor)) install.packages('janitor')
+if (!require(openintro)) install.packages('openintro')
 
 
 library(tidyverse)
