@@ -18,7 +18,9 @@ jobs:
         with:
           r-version: '3.5.3'
       - run: sudo apt-get install -y libxml2-dev libcurl4-openssl-dev libssl-dev
+      - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/JHU_Download.R
       - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/parametricbyState.R
+      - run: Rscript /home/runner/work/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/RtByCounty.R
       - run: |
           git config --global user.name 'nick3703'
           git config --global user.email 'nicholasjsclark@gmail.com'
