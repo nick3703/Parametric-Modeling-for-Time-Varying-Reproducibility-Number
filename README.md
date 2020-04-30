@@ -27,6 +27,8 @@ using serial intervals estimates from SARS data will result in overestimation of
 number," and (2) "the serial interval of COVID-19 is close to or shorter than its median incubation period. 
 This suggests that a substantial proportion of secondary transmission may occur prior to illness onset."
 
+The main files to run are parametricbyState.R which fits a parametric model the empirical Rt values for each state and Rtbycounty.R which gives the empirical Rt estimates by county
+
 ## Update 23 April
 
 Added Rt by County which calculates the empirical Rt value for each county in America.  Please note that county level estimates for rural counties are unlikely to be valid due to small sample sizes.
