@@ -47,3 +47,6 @@ read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-
 
 read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"ByCounty.csv"))
 
+## Update 30 April
+Added script to project future cases of COVID using empirical Rt from Italy.  The script, ProjectingCasesusingItaly.R, extracts the Rt values from Italy and uses them within an SEIR framework to project cases for a given geographic area.
+
