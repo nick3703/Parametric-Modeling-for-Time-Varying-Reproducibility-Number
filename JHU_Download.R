@@ -94,7 +94,6 @@ get_jhu_daily_data()
 # OUTPUT: named list of dataframes used in sections 1, 3, and 4
 # load_data_files()
 
-load_data_files()
 
 load_data_files <- function(max_date = lubridate::today()){
   
@@ -170,6 +169,8 @@ load_data_files <- function(max_date = lubridate::today()){
   return(data_list)
 }  
 
-jhu_all <- load_data_files()
+jhu_all <- load_data_files()$jhu_all
 
-write_csv(data_list$jhu_all)
+write_csv(path = str_c(lubridate::today(),"_JHU.csv"),jhu_all)
+
+load_data_files()
