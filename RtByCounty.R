@@ -131,9 +131,9 @@ rt_wide<-rt_est%>%pivot_wider(id_cols=fips,names_from=day,values_from=r.vals)
 
 write.csv(rt_wide,paste0(lubridate::today(),"ByCounty.csv"))
 
-#source("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/GitPushFunctions.R")
-#git2r::config(user.name = "nick3703",user.email = "nick3703@hotmail.com")
+source("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/GitPushFunctions.R")
+git2r::config(user.name = "nick3703",user.email = "nick3703@hotmail.com")
 
-#gitadd()
-#gitcommit()
-#gitpush()
+gitadd()
+gitcommit()
+gitpush()
