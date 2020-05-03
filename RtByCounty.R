@@ -53,6 +53,9 @@ if (!require(drat)) install.packages('drat')
 library(tidyverse)
 library(extraDistr)
 library(mixdist) #used to recoved the Weibull parameters from the mean and sd
+library(drat)
+library(ciTools)
+library(git2r)
 
 jhu_all<-read_csv(paste0("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/",lubridate::today(),"_JHU.csv"))
 
