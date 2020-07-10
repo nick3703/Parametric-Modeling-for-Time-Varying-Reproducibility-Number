@@ -12,7 +12,7 @@ options(tibble.width = Inf)
 
 read_jhu_file_US <- function(jhu_directory, file_name){
   daily <- read_csv(str_c(jhu_directory, file_name),
-                    guess_max = 10000) %>%
+                    col_types = "cccccddddddcdd") %>%
     mutate(date = mdy(file_name %>% str_replace(fixed(".csv"), ""))) %>%
     filter(Country_Region == "US") %>%
     mutate(Province_State = case_when(
@@ -46,7 +46,7 @@ read_jhu_file_pacom <- function(jhu_directory, file_name){
   
   daily <-
     read_csv(str_c(jhu_directory, file_name),
-             guess_max = 10000) %>% 
+             col_types = "cccccddddddcdd") %>% 
     mutate(date = mdy(file_name %>% str_replace(fixed(".csv"), ""))) %>%
     mutate(Country_Region = case_when(
       Province_State == "Hong Kong" ~ "Hong Kong",
@@ -105,7 +105,7 @@ get_jhu_daily_data()
 load_data_files <- function(max_date = lubridate::today()){
   
   # 2. county level census data (not by age)
-  county_pop_US <- read_csv("County_Level_Census_Data_territories.csv", guess_max = 10000) %>%
+  county_pop_US <- read_csv("County_Level_Census_Data_territories.csv", col_types = "cccd") %>%
     janitor::clean_names() %>%
     distinct() %>%
     mutate(county_fips = str_pad(county_fips, width = 5, side = "left", pad = "0")) %>%
@@ -132,7 +132,7 @@ load_data_files <- function(max_date = lubridate::today()){
     purrr::map(~jhu_add_empty_counties(.x, county_pop_US)) %>% 
     bind_rows() %>%
     janitor::clean_names() %>%
-    mutate(state = openintro::abbr2state(state)) %>%
+    mutate(state = abbr2state(state)) %>%
     mutate(admin2 = ifelse(is.na(admin2), county_name_x, admin2),
            province_state = ifelse(is.na(province_state), state, province_state)) %>%
     dplyr::select(fips, date, county_name = admin2, province_state, country_region, confirmed, deaths, recovered, active)
