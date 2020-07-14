@@ -2,11 +2,13 @@ if (!require(tidyverse)) install.packages('tidyverse')
 if (!require(lubridate)) install.packages('lubridate')
 if (!require(janitor)) install.packages('janitor')
 if (!require(openintro)) install.packages('openintro')
+if (!require(usdata)) install.packages('usdata')
 
 
 library(tidyverse)
 library(lubridate)
 library(janitor)
+library(usdata)
 options(scipen = 999)
 options(tibble.width = Inf)
 
