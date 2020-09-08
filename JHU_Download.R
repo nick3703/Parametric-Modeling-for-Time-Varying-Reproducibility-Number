@@ -183,3 +183,10 @@ jhu_all <- load_data_files()$jhu_all
 write_csv(path = str_c(lubridate::today(),"_JHU.csv"),jhu_all)
 
 load_data_files()
+
+source("https://raw.githubusercontent.com/nick3703/Parametric-Modeling-for-Time-Varying-Reproducibility-Number/master/GitPushFunctions.R")
+git2r::config(user.name = "nick3703",user.email = "nick3703@hotmail.com")
+
+gitadd()
+gitcommit()
+gitpush()
